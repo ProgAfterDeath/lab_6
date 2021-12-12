@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Controller">
+   <children>
+      <AnchorPane prefHeight="41.0" prefWidth="1000.0" style="-fx-background-color: grey;">
+         <children>
+            <Text layoutX="410.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone info about customers" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="exit" layoutX="948.0" layoutY="8.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" text="exit" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="40.0" prefHeight="560.0" prefWidth="1000.0" style="-fx-background-color: #333;">
+         <children>
+            <Text fill="WHITE" layoutX="94.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Form" />
+            <Text fill="WHITE" layoutX="25.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer №" />
+            <Text fill="WHITE" layoutX="582.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List of users">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="number" layoutX="140.0" layoutY="30.0" prefHeight="25.0" prefWidth="123.0" promptText="Number" />
+            <Text fill="WHITE" layoutX="25.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="id:" />
+            <TextField fx:id="id" layoutX="140.0" layoutY="66.0" prefHeight="25.0" prefWidth="123.0" promptText="id" />
+            <Text fill="WHITE" layoutX="27.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full name:" />
+            <TextField fx:id="full_name" layoutX="140.0" layoutY="100.0" prefHeight="25.0" prefWidth="122.0" promptText="Full name" />
+            <Text fill="WHITE" layoutX="26.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Account number" />
+            <TextField fx:id="acc_number" layoutX="141.0" layoutY="134.0" prefHeight="25.0" prefWidth="122.0" promptText="Account number" />
+            <Text fill="WHITE" layoutX="27.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time of city calls:" />
+            <TextField fx:id="time_of_city_calls" layoutX="142.0" layoutY="170.0" prefHeight="25.0" prefWidth="122.0" promptText="Time of city calls" />
+            <Text fill="WHITE" layoutX="26.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time out of city calls:" />
+            <TextField fx:id="time_out_of_city_calls" layoutX="141.0" layoutY="207.0" prefHeight="25.0" prefWidth="122.0" promptText="Time out of city calls" />
+            <Button fx:id="add_customer" layoutX="85.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="123.0" text="add customer" />
+            <Text fill="WHITE" layoutX="587.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Parameters">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <CheckBox fx:id="checkBox_1" layoutX="287.0" layoutY="257.0" mnemonicParsing="false" text="show information about customers whose city calls time exceeds the set one:" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkBox_2" layoutX="288.0" layoutY="294.0" mnemonicParsing="false" text="show information about customers who used out of city calls" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="checkBox_3" layoutX="288.0" layoutY="329.0" mnemonicParsing="false" text="show information about customers whose acc number is in the specified range:" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </CheckBox>
+            <Text fill="WHITE" layoutX="408.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sorted list of users">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <GridPane fx:id="sorted_list" layoutX="15.0" layoutY="400.0" prefHeight="149.0" prefWidth="970.0" style="-fx-background-color: white;">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <GridPane fx:id="full_list" layoutX="279.0" layoutY="42.0" prefHeight="149.0" prefWidth="702.0" style="-fx-background-color: white;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <TextField fx:id="set_limit" layoutX="834.0" layoutY="255.0" prefHeight="25.0" prefWidth="61.0" promptText="Set limit" />
+            <TextField fx:id="lower_limit" layoutX="851.0" layoutY="327.0" prefHeight="25.0" prefWidth="40.0" promptText="from" />
+            <TextField fx:id="higher_limit" layoutX="902.0" layoutY="327.0" prefHeight="25.0" prefWidth="40.0" promptText="to" />
+            <AnchorPane layoutX="14.0" layoutY="285.0" prefHeight="98.0" prefWidth="263.0" style="-fx-background-color: grey;">
+               <children>
+                  <Text layoutX="42.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remove customer by id:">
+                     <font>
+                        <Font name="Consolas" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter id of customer:">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="enter_id" layoutX="160.0" layoutY="31.0" prefHeight="25.0" prefWidth="92.0" promptText="enter id" />
+                  <Button fx:id="remove" layoutX="82.0" layoutY="66.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="102.0" text="Remove">
+                     <font>
+                        <Font name="Consolas" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
