@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class ReadObject {
 
-    public String deserialization(ArrayList<Phone> clients, String filename){
+    public String readObject(ArrayList<Phone> clients, String filename){
         try {
             FileInputStream fis = new FileInputStream(filename);
             ObjectInputStream ois = new ObjectInputStream(fis);

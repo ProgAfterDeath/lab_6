@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class WriteObject {
 
-    public void serialization(ArrayList<Phone> clients, String filename) {
+    public void writeObject(ArrayList<Phone> clients, String filename) {
             try {
                 FileOutputStream fos = new FileOutputStream(filename);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);

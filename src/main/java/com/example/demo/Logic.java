@@ -31,9 +31,8 @@ public class Logic{
         enter_id.clear();
     }
 
-    public ArrayList<Phone> infAboutCityCalls(ArrayList<Phone> clients, TextField set_limit){
-        ArrayList<Phone> temp = new ArrayList<>();
-        float value = Float.parseFloat(set_limit.getText());
+    public ArrayList<Phone> infAboutCityCalls(ArrayList<Phone> clients, float value){
+        ArrayList<Phone> temp = new ArrayList<Phone>();
 
         for (Phone client : clients){
             if (client.getCityTalkTime() > value){
@@ -44,7 +43,7 @@ public class Logic{
     }
 
     public ArrayList<Phone> outOfCityTalkTimeUsers(ArrayList<Phone> clients){
-        ArrayList<Phone> temp = new ArrayList<>();
+        ArrayList<Phone> temp = new ArrayList<Phone>();
         for (Phone client : clients){
             if (client.getOutOfCityTalkTime() > 0){
                 temp.add(client);
@@ -53,10 +52,9 @@ public class Logic{
         return temp;
     }
 
-    public ArrayList<Phone> accNumberInRange(ArrayList<Phone> clients, TextField lower_limit, TextField higher_limit){
-        ArrayList<Phone> temp = new ArrayList<>();
-        int minValue = Integer.parseInt(lower_limit.getText());
-        int maxValue = Integer.parseInt(higher_limit.getText());
+    public ArrayList<Phone> accNumberInRange(ArrayList<Phone> clients, int minValue, int maxValue){
+        ArrayList<Phone> temp = new ArrayList<Phone>();
+
         for (Phone client : clients){
             if (client.getAccNumber() >= minValue && client.getAccNumber() <= maxValue){
                 temp.add(client);

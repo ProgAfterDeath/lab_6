@@ -44,9 +44,9 @@ public class Controller {
     @FXML private CheckBox checkBox_2;
     @FXML private CheckBox checkBox_3;
 
-    private final WriteObject serializator = new WriteObject();
-    private final ReadObject deserializator = new ReadObject();
-    private ArrayList<Phone> phone = new ArrayList<>();
+    private final WriteObject writeObject = new WriteObject();
+    private final ReadObject readObject = new ReadObject();
+    private ArrayList<Phone> phone = new ArrayList<Phone>();
     private Phone client = new Phone();
     private final Show show = new Show();
     private final Logic logic = new Logic();
@@ -60,8 +60,8 @@ public class Controller {
 
                 client = logic.addClient(number, id, full_name, acc_number, time_of_city_calls, time_out_of_city_calls);
                 phone.add(client);
-                serializator.serialization(phone, "lab_6.bin");
-                deserializator.deserialization(phone, "lab_6.bin");
+                writeObject.writeObject(phone, "lab_6.bin");
+                readObject.readObject(phone, "lab_6.bin");
                 show.showClients(client, full_list);
                 logic.clearClientInfo(number, id, full_name, acc_number, time_of_city_calls, time_out_of_city_calls);
 
@@ -83,18 +83,22 @@ public class Controller {
                 stage.showAndWait();
             }
             if (checkBox_1.isSelected()) {
-                show.showSortedClients(logic.infAboutCityCalls(phone, set_limit), sorted_list);
+                show.showSortedClients(logic.infAboutCityCalls(phone, Float.parseFloat(set_limit.getText())),
+                        sorted_list);
             } else if (checkBox_2.isSelected()) {
                 show.showSortedClients(logic.outOfCityTalkTimeUsers(phone), sorted_list);
             } else if (checkBox_3.isSelected()) {
-                show.showSortedClients(logic.accNumberInRange(phone, lower_limit, higher_limit), sorted_list);
+                show.showSortedClients(logic.accNumberInRange(phone, Integer.parseInt(lower_limit.getText()),
+                                Integer.parseInt(higher_limit.getText())),
+                                        sorted_list);
             }
         });
 
         checkBox_1.setOnAction(event -> {
             if (checkBox_1.isSelected()) {
                 if (set_limit.getText() != "") {
-                    show.showSortedClients(logic.infAboutCityCalls(phone, set_limit), sorted_list);
+                    show.showSortedClients(logic.infAboutCityCalls(phone, Float.parseFloat(set_limit.getText())),
+                            sorted_list);
                 }
 
             }
@@ -116,7 +120,9 @@ public class Controller {
         checkBox_3.setOnAction(event -> {
             if(checkBox_3.isSelected()) {
                 if (lower_limit.getText() != "" && higher_limit.getText() != "") {
-                    show.showSortedClients(logic.accNumberInRange(phone, lower_limit, higher_limit), sorted_list);
+                    show.showSortedClients(logic.accNumberInRange(phone, Integer.parseInt(lower_limit.getText()),
+                                    Integer.parseInt(higher_limit.getText())),
+                                            sorted_list);
                 }
             }
             else {
@@ -138,11 +144,14 @@ public class Controller {
                 show.showSortedClients(phone, full_list);
                 //show.showSortedClients(phone, sorted_list);
                 if (checkBox_1.isSelected()) {
-                    show.showSortedClients(logic.infAboutCityCalls(phone, set_limit), sorted_list);
+                    show.showSortedClients(logic.infAboutCityCalls(phone, Float.parseFloat(set_limit.getText())),
+                            sorted_list);
                 } else if (checkBox_2.isSelected()) {
                     show.showSortedClients(logic.outOfCityTalkTimeUsers(phone), sorted_list);
                 } else if (checkBox_3.isSelected()) {
-                    show.showSortedClients(logic.accNumberInRange(phone, lower_limit, higher_limit), sorted_list);
+                    show.showSortedClients(logic.accNumberInRange(phone, Integer.parseInt(lower_limit.getText()),
+                                    Integer.parseInt(higher_limit.getText())),
+                                            sorted_list);
                 }
             } else {
                 add_customer.getScene().getWindow().hide();
