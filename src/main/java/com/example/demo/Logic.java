@@ -5,30 +5,16 @@ import java.util.ArrayList;
 
 public class Logic{
 
-    public Phone addClient(TextField num, TextField id, TextField fullName, TextField accNumber,
-                           TextField cityTalkTime, TextField outOfCityTalkTime){
+    public Phone addClient(int number, int id, String fullName, int accNumber,
+                           float cityTalkTime, float outOfCityTalkTime){
         Phone client = new Phone();
-        client.setNum(Integer.parseInt(num.getText()));
-        client.setId(Integer.parseInt(id.getText()));
-        client.setFullName(fullName.getText().trim());
-        client.setAccNumber(Integer.parseInt(accNumber.getText()));
-        client.setCityTalkTime(Float.parseFloat(cityTalkTime.getText()));
-        client.setOutOfCityTalkTime(Float.parseFloat(outOfCityTalkTime.getText()));
+        client.setNum(number);
+        client.setId(id);
+        client.setFullName(fullName);
+        client.setAccNumber(accNumber);
+        client.setCityTalkTime(cityTalkTime);
+        client.setOutOfCityTalkTime(outOfCityTalkTime);
         return client;
-    }
-
-    public void clearClientInfo(TextField num, TextField id, TextField fullName, TextField accNumber,
-                                 TextField cityTalkTime, TextField outOfCityTalkTime) {
-        num.clear();
-        id.clear();
-        fullName.clear();
-        accNumber.clear();
-        cityTalkTime.clear();
-        outOfCityTalkTime.clear();
-    }
-
-    public void clearEnterID(TextField enter_id) {
-        enter_id.clear();
     }
 
     public ArrayList<Phone> infAboutCityCalls(ArrayList<Phone> clients, float value){

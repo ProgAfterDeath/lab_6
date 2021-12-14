@@ -3,11 +3,8 @@ package com.example.demo;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,7 +47,6 @@ public class Controller {
     private Phone client = new Phone();
     private final Show show = new Show();
     private final Logic logic = new Logic();
-    Iterator<Phone> iterator = phone.iterator();
     @FXML
     void initialize() {
         add_customer.setOnAction(event -> {
@@ -58,13 +54,14 @@ public class Controller {
                     && acc_number.getText() != "" && time_of_city_calls.getText() != ""
                     && time_out_of_city_calls.getText() != "") {
 
-                client = logic.addClient(number, id, full_name, acc_number, time_of_city_calls, time_out_of_city_calls);
+                client = logic.addClient(Integer.parseInt(number.getText()), Integer.parseInt(id.getText()),
+                        full_name.getText().trim(), Integer.parseInt(acc_number.getText()),
+                        Float.parseFloat(time_of_city_calls.getText()), Float.parseFloat(time_out_of_city_calls.getText()));
                 phone.add(client);
                 writeObject.writeObject(phone, "lab_6.bin");
                 readObject.readObject(phone, "lab_6.bin");
                 show.showClients(client, full_list);
-                logic.clearClientInfo(number, id, full_name, acc_number, time_of_city_calls, time_out_of_city_calls);
-
+                show.clearClientInfo(number, id, full_name, acc_number, time_of_city_calls, time_out_of_city_calls);
 
             } else {
                 add_customer.getScene().getWindow().hide();
@@ -100,7 +97,6 @@ public class Controller {
                     show.showSortedClients(logic.infAboutCityCalls(phone, Float.parseFloat(set_limit.getText())),
                             sorted_list);
                 }
-
             }
             else {
                 sorted_list.getChildren().clear();
@@ -140,9 +136,8 @@ public class Controller {
                     }
                     phone = temp;
                 }
-                logic.clearEnterID(enter_id);
+                show.clearEnterID(enter_id);
                 show.showSortedClients(phone, full_list);
-                //show.showSortedClients(phone, sorted_list);
                 if (checkBox_1.isSelected()) {
                     show.showSortedClients(logic.infAboutCityCalls(phone, Float.parseFloat(set_limit.getText())),
                             sorted_list);
